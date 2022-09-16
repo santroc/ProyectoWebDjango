@@ -8,7 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Santiago - Start Bootstrap Theme</title>
+        {% block page_title %}
+            <title>Home - AppBlog</title>
+        {% endblock %}
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Bootstrap icons-->
@@ -18,6 +20,8 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <link href="{% static 'css/personalStyle.css' %}" rel="stylesheet" />
+        <!-- Bootstrap for messages-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
 
     <body>
@@ -27,30 +31,42 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/AppCoder/home">Home</a>
+                            <a class="nav-link active" aria-current="page" href="home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/AppCoder/cursos">Cursos</a>
+                            <a class="nav-link active" aria-current="page" href="addCurso">Cursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/AppCoder/entregables">Entregables</a>
+                            <a class="nav-link active" aria-current="page" href="addEntregable">Entregables</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/AppCoder/estudiantes">Estudiantes</a>
+                            <a class="nav-link active" aria-current="page" href="addEstudiante">Estudiantes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/AppCoder/profesores">Profesores</a>
+                            <a class="nav-link active" aria-current="page" href="addProfesor">Profesores</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="contenido1">
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+        <div class="success" role="success" >
+            <span class="closebtn" onclick="this.parentElement.style.display='none';"> &times; </span>
+            <!--<button class="closebtn" type="button" onclick="this.parentElement.style.display='none';"&times;</button>-->
+            {{ message }}
+        </div>
+        </div>
+        {% endfor %}
+        {% endif %}
         
         <!--Esto es lo dinámico dentro de la página-->
     
         {% block contenidoQueCambia %}
-            <p> Soy el HTML padre</p>
+        <marquee> Bienvenido a la mejor web del mundo :D </marquee>
         {% endblock %}
 
         <!-- Fin de bloque dinámico-->

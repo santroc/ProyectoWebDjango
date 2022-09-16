@@ -5,24 +5,26 @@
 <link href="{% static 'css/personalStyle.css' %}" rel="stylesheet" />
 <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 
+
 {% block page_title %}
-    <title>Formulario - Estudiante</title>
+    <title>Formulario - Profesor</title>
 {% endblock %}
 
 {% block contenidoQueCambia%}
-<title> Formulario de ingreso de estudiante</title>
+<title> Formulario de ingreso de profesor</title>
 
 <section class="formHead">
-    <p> Ingrese los datos para agregar un estudiante: </p>
+    <p> Ingrese los datos para agregar un profesor: </p>
     
 </section>
 <section class="contenidoFormulario">
-    <form class="formData" action="addEstudiante" method="POST"> {% csrf_token %}
+    <form class="formData" action="addProfesor" method="POST"> {% csrf_token %}
         <input type="text" name="nombre" placeholder="Nombre">
         <input type="text" name="apellido" placeholder="Apellido">
         <input type="email" name="email" placeholder="Correo">
+        <input type="text" name="profesion" placeholder="Profesión">
 
-        <button class="btn btn-primary" type="submit">Agregar estudiante</button>
+        <button class="btn btn-primary" type="submit">Agregar profesor</button>
     </form>
 </section>
 

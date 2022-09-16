@@ -1,0 +1,32 @@
+{% extends "padre.html" %}
+
+{%load static%}
+
+<link href="{% static 'css/personalStyle.css' %}" rel="stylesheet" />
+<link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+{% block page_title %}
+    <title>Formulario - Entregable</title>
+{% endblock %}
+
+
+{% block contenidoQueCambia%}
+<title> Formulario de ingreso de entregable</title>
+
+<section class="formHead">
+    <p> Ingrese los datos para agregar un entregable: </p>
+    
+</section>
+<section class="contenidoFormulario">
+    <form class="formData" action="addEntregable" method="POST"> {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="date" name="fecha">
+        <label> ¿Entregado? <input type="checkbox" name="entregado" value= True ></label>
+
+        <button class="btn btn-primary" type="submit">Agregar entregable</button>
+    </form>
+</section>
+
+
+
+{% endblock %}

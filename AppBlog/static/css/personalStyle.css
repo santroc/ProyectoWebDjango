@@ -3,7 +3,6 @@
     top: 60px;
 }
 
-
 .formData{
     display: flex;
     flex-direction: column;
@@ -14,8 +13,14 @@
     padding: 20px;
 }
 
+.formHead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .contenidoFormulario{
-    background-color: purple;
+    background-color: #0D6EFD;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,10 +33,31 @@ table {
     width: 100%;
     border-collapse: collapse;
     /*border: 3px solid purple;*/
-  }
+}
 
-/* formDataEstudiantes input{
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
 
-    margin-bottom: 5px;
+.success {
+    padding: 20px;
+    background-color: #8ec08e;
+    color: rgb(0, 0, 0);
+}
 
-} */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}

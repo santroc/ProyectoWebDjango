@@ -1,0 +1,31 @@
+{% extends "padre.html" %}
+
+{%load static%}
+
+<link href="{% static 'css/personalStyle.css' %}" rel="stylesheet" />
+<link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+
+{% block page_title %}
+    <title>Formulario - Curso</title>
+{% endblock %}
+
+{% block contenidoQueCambia%}
+<title> Formulario de ingreso de curso</title>
+
+<section class="formHead">
+    <p> Ingrese los datos para agregar un curso: </p>
+    
+</section>
+<section class="contenidoFormulario">
+    <form class="formData" action="addCurso" method="POST"> {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="number" name="camada" placeholder="Cursada">
+
+        <button class="btn btn-primary" type="submit">Agregar curso</button>
+    </form>
+</section>
+
+
+
+{% endblock %}
