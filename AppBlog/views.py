@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib import messages
 from AppBlog.models import *
@@ -61,3 +62,24 @@ def profesorFormulario(request):
 
 
     return render(request, 'forms/profesor.html')
+
+
+def busquedaCurso(request):
+
+    return render(request, 'search_form.html')
+
+def buscar(request):
+
+    if request.GET['camada']:
+
+        camada = request.GET['camada']
+        cursos = Curso.objects.filter(camada__icontains=camada)
+        object_name = 'Cursos'
+        #respuesta = f"Estoy buscando la camada: {request.GET['camada']}"
+        return render(request, 'search_results.html', {"cursos": cursos, "camada": camada, "object_name": object_name})
+
+    else:
+
+        respuesta = 'No encontré nada mani :('
+
+    return HttpResponse(respuesta)
