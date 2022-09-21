@@ -1,0 +1,48 @@
+{% extends "padre.html" %}
+
+{%load static%}
+
+<link href="{% static 'css/personalStyle.css' %}" rel="stylesheet" />
+<link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+
+{% block page_title %}
+    <title>Resultados de búsqueda - {{ object_name }}</title>
+{% endblock %}
+
+{% block contenidoQueCambia%}
+
+<section class="formHead">
+    <p> La búsqueda arrojó los siguientes resultados </p>
+    
+</section>
+<!-- <section class="contenidoFormulario"> -->
+    {% if cursos %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Número de cursada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            {% for curso in cursos %}
+                <td>{{curso.nombre}}</td>
+                <td>{{curso.camada}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <td> La tabla muestra todos los cursos que se alineen con la búsqueda hecha en el sistema </td>
+        </tfoot>
+    </table>
+
+    {% endif %}
+
+<!-- </section> -->
+
+
+
+{% endblock %}
