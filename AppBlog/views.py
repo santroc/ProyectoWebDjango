@@ -66,7 +66,7 @@ def profesorFormulario(request):
 
 def busquedaCurso(request):
 
-    return render(request, 'search_form.html')
+    return render(request, 'search_form_coder.html')
 
 def buscar(request):
 
@@ -76,7 +76,7 @@ def buscar(request):
         cursos = Curso.objects.filter(camada__icontains=camada)
         object_name = 'Cursos'
         #respuesta = f"Estoy buscando la camada: {request.GET['camada']}"
-        return render(request, 'search_results.html', {"cursos": cursos, "camada": camada, "object_name": object_name})
+        return render(request, 'search_results_coder.html', {"cursos": cursos, "camada": camada, "object_name": object_name})
 
     else:
 

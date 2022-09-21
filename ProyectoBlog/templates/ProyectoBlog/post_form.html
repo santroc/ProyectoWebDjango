@@ -1,0 +1,35 @@
+{% extends "padreBlog.html" %}
+
+{%load static%}
+
+<link href="{% static 'css/myStyle.css' %}" rel="stylesheet" />
+<link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+{% block contenidoQueCambia%}
+
+
+    <!-- <h1>Nuevo post</h1>
+    {% if formulario.errors %}
+    <p style="color: red;">Están mal los datos :(</p>
+    {% endif %}
+    <form method="POST"> {% csrf_token %}
+
+        <table>
+            {{ formulario.as_table }}
+        </table>>
+        <input type="submit" value="Crear post">
+    </form> -->
+    <h1> Editar</h1>
+    <p> Por favor revise los datos para editar el post</p>
+    
+    <section class="contenidoFormulario">
+        <form class="formData" method="POST"> {% csrf_token %}
+            {{ form.as_p }}
+    
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </form>
+    </section>
+
+
+
+{% endblock %}

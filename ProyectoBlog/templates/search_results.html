@@ -1,0 +1,42 @@
+{% extends "padreBlog.html" %}
+
+{%load static%}
+
+<link href="{% static 'css/personalStyle.css' %}" rel="stylesheet" />
+<link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+
+{% block page_title %}
+    <title>Resultados de búsqueda - {{ object_name }}</title>
+{% endblock %}
+
+{% block contenidoQueCambia%}
+
+<section class="formHead">
+    <p> La búsqueda arrojó los siguientes resultados: </p>
+    
+</section>
+<!-- <section class="contenidoFormulario"> -->
+    {% if objects %}
+    <div class="col-md-8 mt-3 left">
+        {% for object in objects %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">{{ object.title }}</h2>
+                <p class="card-text text-muted h6">{{ object.created_on}} </p>
+                <p class="card-text">{{post.content|slice:":200" }}</p>
+                <a href="{% url 'post_detail' object.id %}" class="btn btn-primary">Leer más &rarr;</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p> No se encontraron resultados :(</p>
+    {% endif %}
+
+    
+<!-- </section> -->
+
+
+
+{% endblock %}

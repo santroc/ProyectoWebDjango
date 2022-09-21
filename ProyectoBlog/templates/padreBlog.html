@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        {% load static %}
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        {% block page_title %}
+            <title>Home - AppBlog</title>
+        {% endblock %}
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/personalStyle.css' %}" rel="stylesheet" />
+        <!-- Bootstrap for messages-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/pages/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/pages/addPost">Nuevo Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/pages/searchPost">Buscar Post</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="contenido1">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+        <div class="success" role="success" >
+            <span class="closebtn" onclick="this.parentElement.style.display='none';"> &times; </span>
+            <!--<button class="closebtn" type="button" onclick="this.parentElement.style.display='none';"&times;</button>-->
+            {{ message }}
+        </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        
+        <!--Esto es lo dinámico dentro de la página-->
+    
+        {% block contenidoQueCambia %}
+        <marquee> Bienvenido a la mejor web del mundo :D </marquee>
+        
+        <!-- Aquí va la lista de posts -->
+        <div class="col-md-6 mt-3 left">
+            {% if post_list %}
+            {% for post in post_list %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6">{{ post.created_on}} </p>
+                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Leer más &rarr;</a>
+                    <a href="{% url 'post_update' post.id %}" class="btn btn-secondary">Editar </a>
+                    <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Eliminar </a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p style="text-align:center"> No hay post agregados al Blog aún</p>
+            {% endif%}
+        </div>
+        {% endblock %}
+        <!-- Fin de bloque dinámico-->
+        </div>
+    </body>
+</html>

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'AppBlog',
+    'ProyectoBlog',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,8 @@ ROOT_URLCONF = 'ProyectoWebDjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [f'{BASE_DIR}/AppCoder/static', f'{BASE_DIR}/AppCoder/templates/forms'],
+        'DIRS': [f'{BASE_DIR}/AppCoder/static', f'{BASE_DIR}/AppCoder/templates/forms', f'{BASE_DIR}/ProyectoBlog/static', f'{BASE_DIR}/ProyectoBlog/templates',
+        f'{BASE_DIR}/ProyectoBlog/templates/forms'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

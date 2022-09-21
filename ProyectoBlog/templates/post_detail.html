@@ -1,0 +1,18 @@
+{% extends 'padreBlog.html' %} {% block contenidoQueCambia %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        {% block page_title %}
+        <title>{{ object.title }}</title>
+        {% endblock %}
+        <p class=" text-muted">{{ object.created_on }}</p>
+        <p class="card-text ">{{ object.content | safe }}</p>
+        <a href="{% url 'Inicio' %}"> Atrás </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock contenidoQueCambia %}
