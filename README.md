@@ -15,9 +15,9 @@ La URL base es la siguiente: http://127.0.0.1:8000/pages/home
 
 Para agregar una nueva entrada: Seleccionar en la nav-bar "Nuevo post"
 
-para buscar Posts por título seleccionar "Buscar Post" en la nav-bar
+Para buscar Posts por título seleccionar "Buscar Post" en la nav-bar
 
-En la pantalla de home se irán listando las diferentes entradas las cuales son listadas de la más reciente a la más antigua, cada una de ellas cuentas con la opción de ver a detalle ("Leer más") Editar la entrada o eliminarla.
+En la pantalla de home se irán listando las diferentes entradas las cuales son listadas de la más reciente a la más antigua, cada una de ellas cuenta con la opción de ver a detalle ("Leer más") Editar la entrada o eliminarla.
 
 
 Pendientes:
