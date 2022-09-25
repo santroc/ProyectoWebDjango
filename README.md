@@ -23,5 +23,6 @@ En la pantalla de home se irán listando las diferentes entradas las cuales son 
 Pendientes:
 
 - Complementar modelo de "Post"
-- Implementar módulo de Usuarios Django
+- Implementar módulo de Usuarios Django: Módulo básico implementado, pendiente revisar el Front-end para login, logout y registro, funcionan bien pero visualmente les falta trabajo.
 - Adaptar página para que ciertas funciones solo puedan realizarse con sesión iniciada
+- Revisar cómo corregir la visualización de mensajes de error (Que se muestren en rojo en vez de verde como los de success)
