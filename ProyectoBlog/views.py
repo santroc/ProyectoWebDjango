@@ -5,10 +5,13 @@ from .models import Post
 from django.contrib import messages
 from django.shortcuts import redirect
 
-#Login, Logut y sign-up
+#Login, Logout y sign-up
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from ProyectoBlog.forms import UserRegisterForm
+
+#Decorador para requerir inicio de sesión
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -16,7 +19,7 @@ def inicio(request):
 
     return render(request, 'padreBlog.html')
 
-
+@login_required
 def addPost(request):
 
     if (request.method == 'POST'):
