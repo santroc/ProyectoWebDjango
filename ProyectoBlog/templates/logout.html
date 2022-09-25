@@ -1,0 +1,25 @@
+
+{% extends 'padreBlog.html' %}
+
+{% block page_title %}
+    <title>Cierre de sesión</title>
+{% endblock %}
+
+
+{% block contenidoQueCambia %}
+<section class="contenidoFormularioLogIn">
+    <h2> Has cerrado sesión con éxito, redireccionando a Home en <div id="counter">3</div> segundos</h2>
+</section>
+
+<script>
+    setInterval(function() {
+        var div = document.querySelector("#counter");
+        var count = div.textContent * 1 - 1;
+        div.textContent = count;
+        if (count <= 0) {
+            window.location.replace('/pages/home');
+        }
+    }, 1000);
+</script>
+
+{% endblock contenidoQueCambia %}

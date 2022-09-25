@@ -3,6 +3,13 @@ from django.http import HttpResponse
 from django.views import generic
 from .models import Post
 from django.contrib import messages
+from django.shortcuts import redirect
+
+#Login, Logut y sign-up
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+from ProyectoBlog.forms import UserRegisterForm
+
 
 # Create your views here.
 def inicio(request):
@@ -64,3 +71,43 @@ class PostUpdate(generic.UpdateView):
     #template = 'post.html'
     success_url = "/pages/home"
     fields = ['title', 'content']
+
+def login_request(request):
+    
+    if (request.method == 'POST'):
+        form = AuthenticationForm(request, data = request.POST)
+        if form.is_valid():
+            user = form.cleaned_data.get('username')
+            pwd = form.cleaned_data.get('password')
+
+            user = authenticate(username = user, password = pwd)
+
+            if (user is not None):
+                login(request, user)
+                messages.success(request, f'Bienvenido {user}')
+                return redirect('/pages/home')
+            else: #A este ELSE nunca entramos
+                print('Error de datos ingresados')
+                messages.success(request, '¡Error, datos erróneos!')
+                return redirect('/pages/login')
+        else:
+            messages.error(request, '¡Error, datos erróneos!')
+            return redirect('/pages/login')
+    form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
+
+def register(request):
+
+    if (request.method == 'POST'):
+        form = UserRegisterForm(request.POST)
+        #form = UserCreationForm(request.POST)
+        if (form.is_valid()):
+            form.save()
+            messages.success(request, '¡Usuario creado con éxito!')
+            return redirect('/pages/login')
+        else:
+            messages.error(request, '¡Error al intentar registrar!')
+            return redirect('/pages/register')
+    #form = UserCreationForm()
+    form = UserRegisterForm()
+    return render(request, 'register.html', {'form': form})

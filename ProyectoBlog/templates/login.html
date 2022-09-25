@@ -1,0 +1,18 @@
+
+{% extends 'padreBlog.html' %}
+
+{% block page_title %}
+    <title>Iniciar Sesión</title>
+{% endblock %}
+
+
+{% block contenidoQueCambia %}
+<section class="contenidoFormularioLogIn">
+    <form method="POST"> {% csrf_token %}
+    
+        {{form.as_p}}
+        <button class="btn btn-primary" type="submit"> Iniciar Sesión </button>
+    </form>
+    <a href="/pages/register"> ¿Sin cuenta? Regístrate aquí :D</a>
+</section>
+{% endblock contenidoQueCambia %}
