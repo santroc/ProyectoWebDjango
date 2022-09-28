@@ -2,6 +2,7 @@ from django.urls import path
 from AppBlog.views import *
 
 urlpatterns = [
+    path('', cover),
     path('home', inicio, name='Inicio'),
     path('addEstudiante', estudianteFormulario, name='addEstudiante'),
     path('addCurso', cursoFormulario, name='cursoEstudiante'),
