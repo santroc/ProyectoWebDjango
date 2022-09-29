@@ -3,6 +3,10 @@ Proyecto de curso Python + Django
 
 Este proyecto tiene dos Apps.
 
+Para ingresar a la página principal de la aplicación se podrá ingresar a:
+    http://127.0.0.1:8000/AppBlog
+Desde dicho link se podrá acceder tanto a la aplicación AppBlog como al Blog. 
+
 1. AppBlog: Una aplicación donde se encuentra lo que hemos venido trabajando en clase, modelos Estudiante, Profesor, Entregable, Curso con la posibilidad de agregar nuevos a través de de un formulario y poder buscar cursos por número de cursada (camada)
 
 La URL base es la siguiente: http://127.0.0.1:8000/AppBlog/home
