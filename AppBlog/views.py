@@ -5,9 +5,10 @@ from AppBlog.models import *
 
 # Create your views here.
 
+def cover (request):
+    return render(request, 'cover.html')
 
 def inicio(request):
-
     return render(request, 'padre.html')
 
 
