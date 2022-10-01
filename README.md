@@ -31,12 +31,12 @@ Deben realizarse:
 - Complementar modelo de "Post":
     - Agregar subtítulo, autor e imagen ( )
 - Módulo de Usuarios Django: 
-    Mover todo lo relacionado a este módulo a una App independiente y respetar estructura de rutas de la entrga final (ejemplo: /accounts/xyz) ( )
-    Solucionar bug donde ciertas views redireccionan a la página principal pero no se ve el avatar ( )
-    Incluir la opción de editar: descripción  y un link a una página web ( )
+   - Mover todo lo relacionado a este módulo a una App independiente y respetar estructura de rutas de la entrga final (ejemplo: /accounts/xyz) ( )
+   - Solucionar bug donde ciertas views redireccionan a la página principal pero no se ve el avatar ( )
+   - Incluir la opción de editar: descripción  y un link a una página web ( )
 - Implementar página de About ( )
 - Adaptar página para que ciertas funciones solo puedan realizarse con sesión iniciada:
-    Para crear, editar o borrar las fotos debes estar registrado como Administrador ( )
+   - Para crear, editar o borrar las fotos debes estar registrado como Administrador ( )
 - Crear por lo menos tres casos de prueba documentados ( )
 
 Opcionales despriorizados:
