@@ -32,7 +32,7 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/pages/home">Home</a>
+                                <a class="nav-link active" aria-current="page" href="/pages/">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="/pages/addPost">Nuevo Post</a>
@@ -40,9 +40,15 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="/pages/searchPost">Buscar Post</a>
                             </li>
+                            <li class="nav-item" style="position: absolute; right: 120px">
+                                <a class="nav-link active" aria-current="page"  href="/pages/profile"> Hola, {{ user.username }}</a>
+                            </li>
                             <li class="nav-item" style="position: absolute; right: 0px">
                                 <a class="nav-link active" aria-current="page" href="/pages/logout"> Cerrar sesión</a>
                             </li>
+                            <li class="nav-item" style="position: absolute; right: 230px">
+                                <img src="{{ avatar }}" width="40px">
+                            </li> 
                         </ul>
                     </div>
                 </div>
@@ -54,7 +60,7 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/pages/home">Home</a>
+                                <a class="nav-link active" aria-current="page" href="/pages/">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="/pages/searchPost">Buscar Post</a>

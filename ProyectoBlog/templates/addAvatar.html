@@ -1,0 +1,15 @@
+{% extends 'padreBlog.html' %}
+
+{% block page_title %}
+    <title> Agregar avatar de usuario</title>
+{% endblock %}
+
+{% block contenidoQueCambia%}
+
+    <form action="" method="POST" enctype="multipart/form-data">  {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Aceptar">
+    </form>
+
+
+{% endblock %}
