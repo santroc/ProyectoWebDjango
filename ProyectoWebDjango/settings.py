@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'AppBlog',
     'ProyectoBlog',
+    'UserManagement',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [f'{BASE_DIR}/AppCoder/static', f'{BASE_DIR}/AppCoder/templates/forms', f'{BASE_DIR}/ProyectoBlog/static', f'{BASE_DIR}/ProyectoBlog/templates',
-        f'{BASE_DIR}/ProyectoBlog/templates/forms'],
+        f'{BASE_DIR}/ProyectoBlog/templates/forms',f'{BASE_DIR}/UserManagement/static', f'{BASE_DIR}/UserManagement/templates',f'{BASE_DIR}/UserManagement/templates/forms'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

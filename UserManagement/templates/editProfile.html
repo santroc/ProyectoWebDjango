@@ -2,17 +2,18 @@
 {% extends 'padreBlog.html' %}
 
 {% block page_title %}
-    <title>Iniciar Sesión</title>
+    <title>Editar perfil - {{ usuario }}</title>
 {% endblock %}
 
 
 {% block contenidoQueCambia %}
 <section class="contenidoFormularioLogIn">
+    <p> Abajo encontrarás todos los detalles de tu usuario:</p>
     <form method="POST"> {% csrf_token %}
     
         {{form.as_p}}
-        <button class="btn btn-primary" type="submit"> Iniciar Sesión </button>
+        <input type="submit" value="Editar perfil">
     </form>
-    <a href="/pages/register"> ¿Sin cuenta? Regístrate aquí :D</a>
+    <a href="/accounts/profile/changePass"> Cambiar contraseña</a>
 </section>
 {% endblock contenidoQueCambia %}

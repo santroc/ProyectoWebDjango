@@ -26,6 +26,7 @@ urlpatterns = [
     path('cover', cover),
     path('AppBlog/', include('AppBlog.urls')),
     path('pages/', include('ProyectoBlog.urls')),
+    path('accounts/', include('UserManagement.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

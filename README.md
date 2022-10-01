@@ -1,7 +1,7 @@
 # ProyectoWebDjango
 Proyecto de curso Python + Django
 
-Este proyecto tiene dos Apps.
+Este proyecto tiene tres Apps.
 
 Para ingresar a la página principal de la aplicación se podrá ingresar a:
     http://127.0.0.1:8000/cover
@@ -23,6 +23,12 @@ Para buscar Posts por título seleccionar "Buscar Post" en la nav-bar
 
 En la pantalla de home se irán listando las diferentes entradas las cuales son listadas de la más reciente a la más antigua, cada una de ellas cuenta con la opción de ver a detalle ("Leer más") Editar la entrada o eliminarla.
 
+3. UserManagement:
+
+Acá se encuentra todo el trabajo que se encarga de registro, creación y edición de usuarios, las páginas relacionadas a este módulo usan la siguiente estructura de URL:
+
+http://127.0.0.1:8000/accounts/(...)
+
 
 Pendientes:
 
@@ -31,7 +37,7 @@ Deben realizarse:
 - Complementar modelo de "Post":
     - Agregar subtítulo, autor e imagen ( )
 - Módulo de Usuarios Django: 
-   - Mover todo lo relacionado a este módulo a una App independiente y respetar estructura de rutas de la entrga final (ejemplo: /accounts/xyz) ( )
+   - Mover todo lo relacionado a este módulo a una App independiente y respetar estructura de rutas de la entrga final (ejemplo: /accounts/xyz) (X)
    - Solucionar bug donde ciertas views redireccionan a la página principal pero no se ve el avatar ( )
    - Incluir la opción de editar: descripción  y un link a una página web ( )
 - Implementar página de About ( )
@@ -42,3 +48,4 @@ Deben realizarse:
 Opcionales despriorizados:
 - Subir a Heroku ( )
 - Revisar cómo corregir la visualización de mensajes de error (Que se muestren en rojo en vez de verde como los de success) ( )
+- Agregar foto de perfil predeterminada

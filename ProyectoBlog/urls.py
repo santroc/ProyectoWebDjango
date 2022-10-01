@@ -13,12 +13,12 @@ urlpatterns = [
     path('addPost', addPost, name='addPost'),
     path('searchPost', busquedaPost, name='busquedaPost'),
     path('search/', buscar),
-    path('login', login_request, name = 'Login'),
-    path('register', register, name = 'Register'),
-    path('logout', LogoutView.as_view(template_name='logout.html'), name = 'Logout'),
-    path('profile/', profile, name = 'profile'),
-    path('profile/editProfile', editProfile, name = 'editProfile'),
-    path('profile/changePass', change_pass, name = 'changePass'),
-    path('profile/changePass', change_pass, name = 'changePass'),
-    path('profile/changeAvatar', agregarAvatar, name ='changeAvatar')
+    # path('login', login_request, name = 'Login'),
+    # path('register', register, name = 'Register'),
+    # path('logout', LogoutView.as_view(template_name='logout.html'), name = 'Logout'),
+    # path('profile/', profile, name = 'profile'),
+    # path('profile/editProfile', editProfile, name = 'editProfile'),
+    # path('profile/changePass', change_pass, name = 'changePass'),
+    # path('profile/changePass', change_pass, name = 'changePass'),
+    # path('profile/changeAvatar', agregarAvatar, name ='changeAvatar')
 ]

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from ProyectoBlog.models import *
-
+from .models import *
 # Register your models here.
-admin.site.register(Post)
+
+admin.site.register(Avatar)
