@@ -39,7 +39,8 @@ Deben realizarse:
 - Módulo de Usuarios Django: 
    - Mover todo lo relacionado a este módulo a una App independiente y respetar estructura de rutas de la entrga final (ejemplo: /accounts/xyz) (X)
    - Solucionar bug donde ciertas views redireccionan a la página principal pero no se ve el avatar ( )
-   - Incluir la opción de editar: descripción  y un link a una página web ( )
+   - Incluir la opción de editar: descripción  y un link a una página web (X)
+        - Agregar mensaje de éxito al editar y atomicidad para la view de edición (X)
 - Implementar página de About ( )
 - Adaptar página para que ciertas funciones solo puedan realizarse con sesión iniciada:
    - Para crear, editar o borrar las fotos debes estar registrado como Administrador ( )
