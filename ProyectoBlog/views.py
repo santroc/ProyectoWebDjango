@@ -10,7 +10,7 @@ from django.shortcuts import redirect
 #Login, Logout y sign-up
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm,PasswordChangeForm
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
-from ProyectoBlog.forms import UserRegisterForm, UserEditForm, ChangePasswordForm, AvatarFormulario
+#from ProyectoBlog.forms import UserEditForm, ChangePasswordForm, AvatarFormulario
 from django.contrib.auth.models import User
 
 #Decorador para requerir inicio de sesión
@@ -31,8 +31,8 @@ def inicio(request):
 @login_required
 def addPost(request):
 
-    if (request.method == 'POST'):
-        post = Post(title= request.POST['title'], content= request.POST['content'])
+    if (request.method == 'POST' and request.FILES['image']):
+        post = Post(title= request.POST['title'], content= request.POST['content'], subtitle= request.POST['subtitle'], image= request.FILES['image'])
         post.save()
         messages.success(request, '¡Post agregado con éxito!')
         avatar = Avatar.objects.filter(user = request.user.id)
@@ -130,7 +130,8 @@ class PostUpdate(generic.UpdateView):
     model = Post
     #template = 'post.html'
     success_url = "/pages/"
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'subtitle']
+    #Nota mental, acá puede estar el tema de poder modificar las imágenes si se es Admin o no en el sistema
 
     def get_context_data(self, **kwargs):
         context = super(PostUpdate, self).get_context_data(**kwargs)

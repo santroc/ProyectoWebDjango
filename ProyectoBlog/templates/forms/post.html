@@ -23,8 +23,11 @@
         <p> Por favor ingrese los datos para agregar un nuevo post</p>
     </section> 
     <section class="contenidoFormulario">
-        <form class="formData" action="addPost" method="POST"> {% csrf_token %}
+        <form class="formData" action="addPost" method="POST" enctype="multipart/form-data"> {% csrf_token %}
             <input type="text" name="title" placeholder="Título">
+            <input type="text" name="subtitle" placeholder="Subtítulo">
+            <input type="file" id="img" name="image" accept="image/*">
+            Contenido del post:
             <textarea name="content"> </textarea>
     
             <button class="btn btn-primary" type="submit">Enviar</button>

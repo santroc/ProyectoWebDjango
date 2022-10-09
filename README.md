@@ -35,7 +35,7 @@ Pendientes:
 Deben realizarse:
 
 - Complementar modelo de "Post":
-    - Agregar subtítulo, autor e imagen ( )
+    - Agregar subtítulo, autor e imagen (X)
 - Módulo de Usuarios Django: 
    - Mover todo lo relacionado a este módulo a una App independiente y respetar estructura de rutas de la entrga final (ejemplo: /accounts/xyz) (X)
    - Solucionar bug donde ciertas views redireccionan a la página principal pero no se ve el avatar ( )
