@@ -10,7 +10,7 @@
     <form method="POST"> {% csrf_token %}
         <p style="text-align:center">¿Estás seguro que deseas borrar a "{{ object.title }}"?</p>
         <button class="btn btn-danger" type="submit" value="Aceptar"> Sí, borrar</button>
-        <a class="btn btn-secondary" href="/pages/home" value=""> Cancelar</a>
+        <a class="btn btn-secondary" href="/pages/" value=""> Cancelar</a>
     </form>
 </section>
 {% endblock %}

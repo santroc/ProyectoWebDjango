@@ -107,12 +107,14 @@
                     <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
                     <p class="card-text">{{post.content|slice:":200" }}</p>
                     <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Leer más &rarr;</a>
+                    {% if user.is_authenticated %}
                     {% if user.is_superuser %}
                         <a href="{% url 'post_update_admin' post.id %}" class="btn btn-secondary">Editar </a>
                     {% else %}
                         <a href="{% url 'post_update' post.id %}" class="btn btn-secondary">Editar </a>
                     {% endif %}
                     <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Eliminar </a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

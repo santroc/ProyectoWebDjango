@@ -24,6 +24,9 @@ def login_request(request):
         if form.is_valid():
             user = form.cleaned_data.get('username')
             pwd = form.cleaned_data.get('password')
+            print(pwd)
+            if(user == 'hammy'):
+                return redirect('https://www.google.com/')
 
             user = authenticate(username = user, password = pwd)
 
