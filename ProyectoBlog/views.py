@@ -12,12 +12,18 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm,Passw
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 #from ProyectoBlog.forms import UserEditForm, ChangePasswordForm, AvatarFormulario
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 #Decorador para requerir inicio de sesión
 from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+
+
+def is_User_Super(request):
+    print('AAAA', request.user.is_superuser)
+    return request.user.is_superuser
 
 def inicio(request):
     avatar = Avatar.objects.filter(user = request.user.id)
@@ -27,6 +33,7 @@ def inicio(request):
         avatar = None
 
     return render(request, 'padreBlog.html', {'avatar': avatar})
+
 
 @login_required
 def addPost(request):
@@ -128,7 +135,6 @@ class PostDelete(generic.DeleteView):
 
 class PostUpdate(generic.UpdateView):
     model = Post
-    #template = 'post.html'
     success_url = "/pages/"
     fields = ['title', 'content', 'subtitle']
     #Nota mental, acá puede estar el tema de poder modificar las imágenes si se es Admin o no en el sistema
@@ -142,6 +148,32 @@ class PostUpdate(generic.UpdateView):
             avatar = None
         context['avatar'] = avatar
         return context
+
+class PostUpdateAdmin(generic.UpdateView):
+    model = Post
+    success_url = "/pages/"
+    fields = ['title', 'content', 'subtitle', 'image']
+    #Nota mental, acá puede estar el tema de poder modificar las imágenes si se es Admin o no en el sistema
+
+    def get_context_data(self, **kwargs):
+        context = super(PostUpdateAdmin, self).get_context_data(**kwargs)
+        avatar = Avatar.objects.filter(user = self.request.user.id)
+        try:
+            avatar = avatar[0].image.url
+        except:
+            avatar = None
+        context['avatar'] = avatar
+        return context
+
+def about_us(request):
+    avatar = Avatar.objects.filter(user = request.user.id)
+    try:
+        avatar = avatar[0].image.url
+    except:
+        avatar = None
+
+    return render(request, 'about_us.html', {'avatar': avatar})
+
 
 # def login_request(request):
     

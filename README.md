@@ -11,6 +11,16 @@ Desde dicho link se podrá acceder tanto a la aplicación AppBlog como al Blog.
 
 La URL base es la siguiente: http://127.0.0.1:8000/AppBlog/home
 
+¡Proyecto Final!
+
+Integrantes:
+
+Santiago Troitiño Cristancho:
+
+    - Desarrollo de Back-end para CRUD de Posts e implementación de módulo de User Management (Registro, logueo y funcionalidades exclusivas de usuarios registrados), también hice el Front-end.
+
+Detalle de casos de QA: https://docs.google.com/spreadsheets/d/1gs2u9Oyg0yUvxJwAA5CTyFeL6eOY1IdVnP1bjuuwApM/edit#gid=0
+
 2. ProyectoBlog:
 
 Acá se encuentra todo el trabajo que se ha desarrollado referente al proyecto de creación de un Blog.
@@ -38,15 +48,15 @@ Deben realizarse:
     - Agregar subtítulo, autor e imagen (X)
 - Módulo de Usuarios Django: 
    - Mover todo lo relacionado a este módulo a una App independiente y respetar estructura de rutas de la entrga final (ejemplo: /accounts/xyz) (X)
-   - Solucionar bug donde ciertas views redireccionan a la página principal pero no se ve el avatar ( )
    - Incluir la opción de editar: descripción  y un link a una página web (X)
         - Agregar mensaje de éxito al editar y atomicidad para la view de edición (X)
-- Implementar página de About ( )
+- Implementar página de About (X)
 - Adaptar página para que ciertas funciones solo puedan realizarse con sesión iniciada:
-   - Para crear, editar o borrar las fotos debes estar registrado como Administrador ( )
-- Crear por lo menos tres casos de prueba documentados ( )
+   - Para crear, editar o borrar las fotos debes estar registrado como Administrador (X)
+- Crear por lo menos tres casos de prueba documentados (X)
 
-Opcionales despriorizados:
-- Subir a Heroku ( )
-- Revisar cómo corregir la visualización de mensajes de error (Que se muestren en rojo en vez de verde como los de success) ( )
-- Agregar foto de perfil predeterminada
+Opcionales despriorizados (Posterior a entrega final):
+- Subir a Heroku ()
+- Revisar cómo corregir la visualización de mensajes de error (Que se muestren en rojo en vez de verde como los de success) ()
+- Solucionar bug donde ciertas views redireccionan a la página principal pero no se ve el avatar ()
+- Agregar foto de perfil predeterminada ()

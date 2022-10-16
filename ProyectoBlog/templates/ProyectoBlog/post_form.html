@@ -23,10 +23,10 @@
     <p> Por favor revise los datos para editar el post</p>
     
     <section class="contenidoFormulario">
-        <form class="formData" method="POST"> {% csrf_token %}
+        <form class="formData" method="POST" enctype="multipart/form-data"> {% csrf_token %}
             {{ form.as_p }}
     
-            <button class="btn btn-primary" type="submit">Enviar</button>
+            <button class="btn btn-primary" type="submit">Confirmar edición</button>
         </form>
     </section>
 

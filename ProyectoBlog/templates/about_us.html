@@ -1,0 +1,24 @@
+{% extends "padreBlog.html" %}
+
+{%load static%}
+
+<link href="{% static 'css/personalStyle.css' %}" rel="stylesheet" />
+<link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+
+{% block page_title %}
+    <title>Sobre nosotros - Equipo de desarrollo</title>
+{% endblock %}
+
+{% block contenidoQueCambia%}
+
+
+        <h2>Sobre el proyecto</h2>
+        <p>Este es un blog sencillo hecho usando Django y Python donde los usuarios pueden registrarse y ejecutar CRUD sobre los posts</p>
+
+        <h3>Santiago Troitiño Cristancho</h3>
+        <p>Profesional de Ingeniería Informática con pasión por la tecnología, la música y ahora Python :D</p>
+
+
+
+{% endblock %}
