@@ -12,4 +12,11 @@ class Post(models.Model):
     image = models.ImageField(upload_to = 'blog_pics', blank=True, null=True, default = 'default_blog_pic.png')
 
 
+class Message(models.Model):
+    sender = models.ForeignKey(User, on_delete= models.SET_NULL, null = True, related_name = 'sender')
+    receiver = models.ForeignKey(User, on_delete= models.SET_NULL, null = True, related_name = 'receiver')
+    created_at = models.DateTimeField(auto_now_add=True)
+    message = models.TextField(max_length=500)
+
+
 

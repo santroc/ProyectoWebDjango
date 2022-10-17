@@ -1,0 +1,24 @@
+{% extends 'padreBlog.html' %} {% block contenidoQueCambia %}
+
+
+<h2> Mis mensajes </h2>
+
+<a class="btn btn-success" style="text-decoration: none; color: white" href="{% url 'new_msg'%}">Nuevo mensaje</a>
+
+<div class="col-md-6 mt-3 left">
+    {% if message_list %}
+    {% for message in message_list %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">{{ message.sender }}</h2>
+            <p class="card-text text-muted h6">{{ message.created_at }}</p>
+            <a href="{% url 'message_detail' message.id %}" class="btn btn-primary">Leer</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p style="text-align:center"> No hay mensajes</p>
+    {% endif%}
+</div>
+
+{% endblock contenidoQueCambia %}

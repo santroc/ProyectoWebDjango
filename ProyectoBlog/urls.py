@@ -15,6 +15,9 @@ urlpatterns = [
     path('searchPost', busquedaPost, name='busquedaPost'),
     path('search/', buscar),
     path('about', about_us),
+    path('inbox', show_inbox.as_view(), name = 'inbox'),
+    path('<int:pk>/', msg_detail.as_view(), name = 'message_detail'),
+    path('new/', create_msg.as_view(), name = 'new_msg')
     #path('test', is_User_Super)
     # path('login', login_request, name = 'Login'),
     # path('register', register, name = 'Register'),

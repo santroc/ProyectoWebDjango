@@ -54,6 +54,10 @@ Deben realizarse:
 - Adaptar página para que ciertas funciones solo puedan realizarse con sesión iniciada:
    - Para crear, editar o borrar las fotos debes estar registrado como Administrador (X)
 - Crear por lo menos tres casos de prueba documentados (X)
+- Crear funcionalidad de mensajería entre perfiles:
+    - Implementar funcionalidad de enviar mensajes a otros perfiles (X)
+    - Implementar bandeja de entrada con mensajes ordenados del más a menos reciente (X)
+    - Implementar botón de respuesta ()
 
 Opcionales despriorizados (Posterior a entrega final):
 - Subir a Heroku ()

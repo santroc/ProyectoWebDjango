@@ -9,6 +9,9 @@
 <h2> Abajo encontrarás la información de tu perfil </h2>
 <div style="position: relative; top: 80px">
     <ul>
+        <b> Foto de perfil: </b> <br>
+        <img src="{{ avatar }}" width="100px">
+        
         <li><b> Nombre de usuario: </b>{{ user.username }}</li>
         <li><b> Correo registrado: </b>{{ user.email }}</li>
         <li><b> Nombre completo: </b> {{ user.first_name }} {{ user.last_name }}</li>
@@ -17,5 +20,6 @@
     </ul>
     <a class="btn btn-success" style="text-decoration: none; color: white" href="{% url 'editProfile'%}">Editar Perfil</a>
     <a class="btn btn-success" style="text-decoration: none; color: white" href="{% url 'changeAvatar'%}"> Cambiar imagen de perfil</a>
+    <a class="btn btn-success" style="text-decoration: none; color: white" href="{% url 'inbox' %}"> Bandeja de entrada</a>
 </div>
 {% endblock contenidoQueCambia %}

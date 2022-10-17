@@ -1,0 +1,9 @@
+{% extends 'padreBlog.html' %} {% block contenidoQueCambia %}
+
+<h1>{{ object.sender }}</h1>
+<p>{{ object.message }}</p>
+
+<a href="#" class="btn btn-primary"> Responder </a>
+<a href="{% url 'inbox' %}" class="btn btn-primary"> Atrás </a>
+
+{% endblock contenidoQueCambia %}

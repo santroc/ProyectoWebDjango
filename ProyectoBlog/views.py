@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from django.urls import reverse
-from .models import Post
+from .models import Post, Message
 from UserManagement.models import  Avatar
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.template import loader
 
 #Login, Logout y sign-up
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm,PasswordChangeForm
@@ -21,9 +22,9 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-def is_User_Super(request):
-    print('AAAA', request.user.is_superuser)
-    return request.user.is_superuser
+# def is_User_Super(request):
+#     print('AAAA', request.user.is_superuser)
+#     return request.user.is_superuser
 
 def inicio(request):
     avatar = Avatar.objects.filter(user = request.user.id)
@@ -137,7 +138,6 @@ class PostUpdate(generic.UpdateView):
     model = Post
     success_url = "/pages/"
     fields = ['title', 'content', 'subtitle']
-    #Nota mental, acá puede estar el tema de poder modificar las imágenes si se es Admin o no en el sistema
 
     def get_context_data(self, **kwargs):
         context = super(PostUpdate, self).get_context_data(**kwargs)
@@ -153,7 +153,6 @@ class PostUpdateAdmin(generic.UpdateView):
     model = Post
     success_url = "/pages/"
     fields = ['title', 'content', 'subtitle', 'image']
-    #Nota mental, acá puede estar el tema de poder modificar las imágenes si se es Admin o no en el sistema
 
     def get_context_data(self, **kwargs):
         context = super(PostUpdateAdmin, self).get_context_data(**kwargs)
@@ -173,6 +172,44 @@ def about_us(request):
         avatar = None
 
     return render(request, 'about_us.html', {'avatar': avatar})
+
+
+# def show_inbox(request):
+
+#     data = {'messages': Message.objects.filter(receiver=request.user)}
+
+#     plantilla = loader.get_template('inbox.html')
+#     response = plantilla.render(data)
+
+#     return HttpResponse(response)
+
+class show_inbox(generic.ListView):
+
+    model = Message
+    template_name = 'inbox.html'
+
+    def get_queryset(self):
+        #Filtro por mensajes para mi usuario
+        return Message.objects.order_by('-created_at').filter(receiver=self.request.user)
+    
+
+class msg_detail(generic.DetailView):
+
+    model = Message
+    template_name = 'msg_detail.html'
+
+class create_msg(generic.CreateView):
+
+    model = Message
+    fields = ['receiver', 'message']
+    success_url = '/pages'
+    template_name = 'msg_new.html'
+
+    def form_valid(self, form):
+        form.instance.sender = self.request.user
+        return super(create_msg, self).form_valid(form)
+
+
 
 
 # def login_request(request):
