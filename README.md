@@ -57,7 +57,7 @@ Deben realizarse:
 - Crear funcionalidad de mensajería entre perfiles:
     - Implementar funcionalidad de enviar mensajes a otros perfiles (X)
     - Implementar bandeja de entrada con mensajes ordenados del más a menos reciente (X)
-    - Implementar botón de respuesta ()
+    - Implementar botón de respuesta (X)
 
 Opcionales despriorizados (Posterior a entrega final):
 - Subir a Heroku ()

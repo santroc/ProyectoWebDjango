@@ -202,7 +202,7 @@ class create_msg(generic.CreateView):
 
     model = Message
     fields = ['receiver', 'message']
-    success_url = '/pages'
+    success_url = '/pages/messages/inbox'
     template_name = 'msg_new.html'
 
     def form_valid(self, form):
@@ -213,7 +213,7 @@ class create_msg(generic.CreateView):
 class reply_msg(generic.CreateView):
     model = Message
     fields = ['message']
-    success_url = '/pages/inbox'
+    success_url = '/pages/messages/inbox'
     template_name = 'msg_new.html'
 
     # def get_context_data(self, **kwargs):

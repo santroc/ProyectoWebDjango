@@ -15,10 +15,10 @@ urlpatterns = [
     path('searchPost', busquedaPost, name='busquedaPost'),
     path('search/', buscar),
     path('about', about_us),
-    path('inbox', show_inbox.as_view(), name = 'inbox'),
-    path('<int:pk>/', msg_detail.as_view(), name = 'message_detail'),
-    path('new/', create_msg.as_view(), name = 'new_msg'),
-    path('reply/<int:sender>', reply_msg.as_view(), name = 'reply_msg')
+    path('messages/inbox', show_inbox.as_view(), name = 'inbox'),
+    path('messages/<int:pk>/', msg_detail.as_view(), name = 'message_detail'),
+    path('messages/new/', create_msg.as_view(), name = 'new_msg'),
+    path('messages/reply/<int:sender>', reply_msg.as_view(), name = 'reply_msg')
     #path('test', is_User_Super)
     # path('login', login_request, name = 'Login'),
     # path('register', register, name = 'Register'),
