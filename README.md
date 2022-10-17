@@ -17,7 +17,7 @@ Integrantes:
 
 Santiago Troitiño Cristancho:
 
-    - Desarrollo de Back-end para CRUD de Posts e implementación de módulo de User Management (Registro, logueo y funcionalidades exclusivas de usuarios registrados), también hice el Front-end.
+    - Desarrollo de Back-end para CRUD de Posts, módulo de mensajería y de User Management (Registro, logueo y funcionalidades exclusivas de usuarios registrados), también hice el Front-end.
 
 Detalle de casos de QA: https://docs.google.com/spreadsheets/d/1gs2u9Oyg0yUvxJwAA5CTyFeL6eOY1IdVnP1bjuuwApM/edit#gid=0
 
@@ -64,7 +64,8 @@ Deben realizarse:
     - Implementar botón de respuesta (X)
 
 Opcionales despriorizados (Posterior a entrega final):
-- Subir a Heroku ()
+- Subir a Heroku (X)
 - Revisar cómo corregir la visualización de mensajes de error (Que se muestren en rojo en vez de verde como los de success) ()
+- Revisar error de edición de perfil para usuarios que no tengan uno creado ()
 - Solucionar bug donde ciertas views redireccionan a la página principal pero no se ve el avatar ()
 - Agregar foto de perfil predeterminada ()
