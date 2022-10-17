@@ -1,0 +1,11 @@
+asgiref==3.5.2
+dj-database-url==1.0.0
+Django==4.1
+django-clearcache==1.2.1
+django-messages==0.6.0
+gunicorn==20.1.0
+Pillow==9.2.0
+sqlparse==0.4.2
+tzdata==2022.1
+whitenoise==6.2.0
+psycopg2==2.6.2

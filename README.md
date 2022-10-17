@@ -21,6 +21,10 @@ Santiago Troitiño Cristancho:
 
 Detalle de casos de QA: https://docs.google.com/spreadsheets/d/1gs2u9Oyg0yUvxJwAA5CTyFeL6eOY1IdVnP1bjuuwApM/edit#gid=0
 
+Tatiana Cazzazola:
+
+    - Página Front-End de portada
+
 2. ProyectoBlog:
 
 Acá se encuentra todo el trabajo que se ha desarrollado referente al proyecto de creación de un Blog.

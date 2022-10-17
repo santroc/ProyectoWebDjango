@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-!=$k$3g+rn1$=*ev7_=#ebdie9(i9a$tvbp(wgn_n2(k_+z+@(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 #Added message tags
 
@@ -61,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'ProyectoWebDjango.urls'
@@ -142,3 +143,16 @@ LOGIN_URL = '/pages/login'
 #Configuración para imágenes de avatar
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+###Para poder montarlo en Heroku###
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
+
+os.makedirs(STATIC_TMP, exist_ok= True)
+os.makedirs(STATIC_ROOT, exist_ok= True)
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
