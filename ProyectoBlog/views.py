@@ -40,7 +40,8 @@ def inicio(request):
 def addPost(request):
 
     if (request.method == 'POST' and request.FILES['image']):
-        post = Post(title= request.POST['title'], content= request.POST['content'], subtitle= request.POST['subtitle'], image= request.FILES['image'])
+        user = User.objects.get(id = request.user.id )
+        post = Post(title= request.POST['title'], content= request.POST['content'], subtitle= request.POST['subtitle'], image= request.FILES['image'], author= user)
         post.save()
         messages.success(request, '¡Post agregado con éxito!')
         avatar = Avatar.objects.filter(user = request.user.id)
