@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views import generic
 from django.urls import reverse
 from UserManagement.models import  Avatar, PerfilUsuario
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.shortcuts import redirect
 
@@ -94,7 +95,10 @@ def editProfile(request):
     else:
         form = UserEditForm(initial = {'email': usuario.email, 'username': usuario.username,
         'first_name': usuario.first_name, 'last_name': usuario.last_name})
-        user_profile_form = UserProfileEditForm(initial = {'description': usuario.perfilusuario.description,'web_link': usuario.perfilusuario.web_link})
+        try:
+            user_profile_form = UserProfileEditForm(initial = {'description': usuario.perfilusuario.description,'web_link': usuario.perfilusuario.web_link})
+        except ObjectDoesNotExist:
+            user_profile_form = UserProfileEditForm()
     return render(request, 'editProfile.html', {'form': form, 'usuario': usuario, 'profile_form': user_profile_form})
 
 @login_required
