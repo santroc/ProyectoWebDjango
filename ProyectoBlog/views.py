@@ -152,7 +152,7 @@ class PostUpdate(generic.UpdateView):
 class PostUpdateAdmin(generic.UpdateView):
     model = Post
     success_url = "/pages/"
-    fields = ['title', 'content', 'subtitle', 'image']
+    fields = ['title', 'content', 'subtitle', 'image'] 
 
     def get_context_data(self, **kwargs):
         context = super(PostUpdateAdmin, self).get_context_data(**kwargs)
@@ -173,16 +173,6 @@ def about_us(request):
 
     return render(request, 'about_us.html', {'avatar': avatar})
 
-
-# def show_inbox(request):
-
-#     data = {'messages': Message.objects.filter(receiver=request.user)}
-
-#     plantilla = loader.get_template('inbox.html')
-#     response = plantilla.render(data)
-
-#     return HttpResponse(response)
-
 class show_inbox(generic.ListView):
 
     model = Message
@@ -191,6 +181,16 @@ class show_inbox(generic.ListView):
     def get_queryset(self):
         #Filtro por mensajes para mi usuario
         return Message.objects.order_by('-created_at').filter(receiver=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super(show_inbox, self).get_context_data(**kwargs)
+        avatar = Avatar.objects.filter(user = self.request.user.id)
+        try:
+            avatar = avatar[0].image.url
+        except:
+            avatar = None
+        context['avatar'] = avatar
+        return context
     
 
 class msg_detail(generic.DetailView):
@@ -208,6 +208,24 @@ class create_msg(generic.CreateView):
     def form_valid(self, form):
         form.instance.sender = self.request.user
         return super(create_msg, self).form_valid(form)
+
+
+class reply_msg(generic.CreateView):
+    model = Message
+    fields = ['message']
+    success_url = '/pages/inbox'
+    template_name = 'msg_new.html'
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['receiver'] = self.kwargs['receiver']
+    #     return context
+
+    def form_valid(self, form):
+        form.instance.sender = self.request.user
+        receiver = User.objects.get(id = self.kwargs['sender'])
+        form.instance.receiver = receiver
+        return super(reply_msg, self).form_valid(form)
 
 
 

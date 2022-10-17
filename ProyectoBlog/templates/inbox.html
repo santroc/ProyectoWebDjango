@@ -11,7 +11,7 @@
     <div class="card mb-4">
         <div class="card-body">
             <h2 class="card-title">{{ message.sender }}</h2>
-            <p class="card-text text-muted h6">{{ message.created_at }}</p>
+            <p class="card-text text-muted h6">Enviado el: {{ message.created_at }}</p>
             <a href="{% url 'message_detail' message.id %}" class="btn btn-primary">Leer</a>
         </div>
     </div>

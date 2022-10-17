@@ -1,9 +1,11 @@
 {% extends 'padreBlog.html' %} {% block contenidoQueCambia %}
 
-<h1>{{ object.sender }}</h1>
-<p>{{ object.message }}</p>
+<h1>Mensaje de: {{ object.sender }}</h1>
+<p> Enviado el: {{ object.created_at }}</p>
+<b>Mensaje: </b> <br>
+<p> {{ object.message }}</p>
 
-<a href="#" class="btn btn-primary"> Responder </a>
+<a href="{% url 'reply_msg' sender=object.sender.id %}" class="btn btn-primary"> Responder </a>
 <a href="{% url 'inbox' %}" class="btn btn-primary"> Atrás </a>
 
 {% endblock contenidoQueCambia %}
