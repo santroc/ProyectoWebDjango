@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from django.urls import reverse
-from .models import Post, Message
+from .models import Post, Message, Comment
+from .forms import CommentForm
 from UserManagement.models import  Avatar
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.template import loader
 
 #Login, Logout y sign-up
@@ -38,7 +39,6 @@ def inicio(request):
 
 @login_required
 def addPost(request):
-
     if (request.method == 'POST' and request.FILES['image']):
         user = User.objects.get(id = request.user.id )
         post = Post(title= request.POST['title'], content= request.POST['content'], subtitle= request.POST['subtitle'], image= request.FILES['image'], author= user)
@@ -103,7 +103,6 @@ class PostList(generic.ListView):
             avatar = None
         context['avatar'] = avatar
         return context
-    
 
 class PostDetail(generic.DetailView):
 
@@ -111,14 +110,56 @@ class PostDetail(generic.DetailView):
     template_name = 'post_detail.html'
 
     def get_context_data(self, **kwargs):
-        context = super(PostDetail, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        
+        form = CommentForm()
+        post = get_object_or_404(Post, pk=pk)
+        comments = post.commented_post.all()
+
         avatar = Avatar.objects.filter(user = self.request.user.id)
         try:
             avatar = avatar[0].image.url
         except:
             avatar = None
+        
         context['avatar'] = avatar
+        context['post']= post
+        context['comments'] = comments
+        context['form'] = form
         return context
+        
+    def add_comment(self, request, *args, **kwargs):
+            form = CommentForm(request.POST)
+            self.object = self.get_object()
+            context = super().get_context_data(**kwargs)
+
+            post = Post.objects.filter(id=self.kwargs['pk'])[0]
+            comments = post.commented_post.all()
+            avatar = Avatar.objects.filter(user = self.request.user.id)
+            try:
+                avatar = avatar[0].image.url
+            except:
+                avatar = None
+        
+            context['avatar'] = avatar
+            context['post'] = post
+            context['comments'] = comments
+            context['form'] = form
+
+            if form.is_valid():
+                form.author = form.cleaned_data['author']
+                form.content = form.cleaned_data['content']
+                form.post =form.cleaned_data['post']
+                form.created = form.cleaned_data['created']
+                form.save()
+                context['form'] = form
+                return self.render('post_detail', context=context)
+            else:
+                form = CommentForm()
+                context['form'] = form
+
+            return self.render_to_response(context=context)
 
 class PostDelete(generic.DeleteView):
     template = 'post_confirm_delete.html'
@@ -227,6 +268,20 @@ class reply_msg(generic.CreateView):
         receiver = User.objects.get(id = self.kwargs['sender'])
         form.instance.receiver = receiver
         return super(reply_msg, self).form_valid(form)
+
+@login_required
+def agregar_comentario_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = PostComentario(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.post = post
+            comentario.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostComentario()
+    return render(request, 'agregar_comentario_post.html', {'form': form})
 
 
 

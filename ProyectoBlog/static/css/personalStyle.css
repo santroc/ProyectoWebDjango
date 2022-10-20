@@ -68,3 +68,11 @@ body > footer {
 position: sticky;
 top: 100vh;
 }
+.comentarios_post {
+    margin: 20px 0px 20px 20px;
+}
+.alert-error {
+    color: white;
+    background-color: rgb(245, 114, 114);
+    border-color: rgb(245, 114, 114);
+}

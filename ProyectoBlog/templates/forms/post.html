@@ -18,22 +18,55 @@
         </table>>
         <input type="submit" value="Crear post">
     </form> -->
-    <h1> Nuevo post</h1>
-    <section class="formHead">
-        <p> Por favor ingrese los datos para agregar un nuevo post</p>
-    </section> 
-    <section class="contenidoFormulario">
-        <form class="formData" action="addPost" method="POST" enctype="multipart/form-data"> {% csrf_token %}
-            <input type="text" name="title" placeholder="Título">
-            <input type="text" name="subtitle" placeholder="Subtítulo">
-            <input type="file" id="img" name="image" accept="image/*">
-            Contenido del post:
-            <textarea name="content"> </textarea>
     
-            <button class="btn btn-primary" type="submit">Enviar</button>
-        </form>
-    </section>
+    <div class="container">
+        <div class="row">
+          <div class="col-8 offset-2">
+            <h1 class=" my-5">Crear un post</h1>
+            <form  action="addPost" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                
+                <div class="form-group">
+                    Title
+                    <input type="text" class="form-control" id="id_title" name="title" value='{{ form.title.value|default:"" }}'>
+                </div>
 
+                <div class="form-group">
+                    Subtítulo
+                    <input type="text" class="form-control" id="id_title" name="title" value='{{ form.subtitle.value|default:"" }}'>
+                </div>
+                
+                <div class="form-group">
+                    Contenido:
+                    <textarea type="text" class="form-control" id="id_content"name="content" cols="40" rows="10">{{ form.content.value|default:"" }}</textarea>
+                </div>
+          
+                  <div class="form-group">
+                    Imágenes:<br>
+                    <input type="file" class="{% if form.image.errors %}is-invalid{% endif %}" id="id_image" name="image"
+                      accept="image/*">
+                    {% if form.image.errors %}
+                    <div class="invalid-feedback">{{ form.image.errors }}</div>
+                    {% endif %}
+                  </div>
+          
+                  <div class="form-group">
+                    Tags<br>
+                    <select class="custom-select w-25" name="tags" id="id_tags" multiple>
+                      {% for name, value in form.tags.field.choices %}
+                      <option value="{{ name }}">{{ value }}</option>
+                      {% endfor %}
+                    </select>
+                    {% if form.tags.errors %}
+                    <div class="invalid-feedback">{{ form.tags.errors }}</div>
+                    {% endif %}
+                  </div>
 
-
+        
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </form>
+      
+          </div>
+        </div>
+      </div>
+    
 {% endblock %}

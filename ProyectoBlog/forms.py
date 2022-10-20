@@ -2,19 +2,22 @@ from email import contentmanager
 from socket import fromshare
 from tkinter import Widget
 from turtle import title
+from ProyectoBlog.models import Comment
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from UserManagement.models import PerfilUsuario
-
-
-
 
 class PostFormulario(forms.Form):
 
     title = forms.CharField()
     content = forms.CharField()
     created_on = forms.DateField()
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('author', 'content')
 
 
 # class UserRegisterForm(UserCreationForm):

@@ -6,10 +6,10 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', PostList.as_view(), name='Inicio'),
-    path(r'^(?P<pk>\d+)$', PostDetail.as_view(), name='post_detail'),
-    path(r'^borrar/(?P<pk>\d+)$', PostDelete.as_view(),name="post_delete"),
-    path(r'^editar/(?P<pk>)$', PostUpdate.as_view(), name = "post_update"),
-    path(r'^editar_admin/(?P<pk>)$', PostUpdateAdmin.as_view(), name = "post_update_admin"),
+    path('<pk>/', PostDetail.as_view(), name='post_detail'),
+    path('borrar/<pk>', PostDelete.as_view(),name="post_delete"),
+    path('editar/<pk>', PostUpdate.as_view(), name = "post_update"),
+    path('editar_admin/<pk>', PostUpdateAdmin.as_view(), name = "post_update_admin"),
     path('deletePost/<post_id>', deletePost, name='post_delete_nv'),
     path('addPost', addPost, name='addPost'),
     path('searchPost', busquedaPost, name='busquedaPost'),
@@ -18,7 +18,8 @@ urlpatterns = [
     path('messages/inbox', show_inbox.as_view(), name = 'inbox'),
     path('messages/<int:pk>/', msg_detail.as_view(), name = 'message_detail'),
     path('messages/new/', create_msg.as_view(), name = 'new_msg'),
-    path('messages/reply/<int:sender>', reply_msg.as_view(), name = 'reply_msg')
+    path('messages/reply/<int:sender>', reply_msg.as_view(), name = 'reply_msg'),
+
     #path('test', is_User_Super)
     # path('login', login_request, name = 'Login'),
     # path('register', register, name = 'Register'),
