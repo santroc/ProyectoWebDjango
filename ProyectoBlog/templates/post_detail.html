@@ -1,22 +1,53 @@
-{% extends 'padreBlog.html' %} {% block contenidoQueCambia %}
+{% extends 'padreBlog.html' %} 
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 left  top">
-      <div class="card-body">
-        {% block page_title %}
-        <title>{{ object.title }}</title>
-        {% endblock %}
-        <h2>{{ object.subtitle }}</h2>
-        <p class=" text-muted">{{ object.author }} | {{ object.created_on }}</p>
-        {% if object.image %}
-        <img src='{{ object.image.url }}'>
-        {% endif %}
-        <p class="card-text ">{{ object.content | safe }}</p>
-        <a href="{% url 'Inicio' %}"> Atrás </a>
+{% block contenidoQueCambia %}
+
+<div class="container-fluid my-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card-body">
+          <h1 class="card-title text-center my-3">{% block title %} {{ post.title }} {% endblock title %}</h1>
+          <p class=" text-muted txt-center mb-3">{{ post.author }} | {{ post.created_on }}</p>
+          {% if post.image %}
+          <img class="card-img-top" src='{{ post.image.url }}'>
+          {% endif %}
+          <p class="card-text mt-5 p-4">{{ post.content | safe }}</p>
+          <a href="{% url 'Inicio' %}"> Atrás </a>
+        </div>
+      </div>
+      <div class="col-lg-6 offset-lg-3 ">
+        <div class="card-body">
+          <!-- comments -->
+          <h2>{{ comments.count }} Comentarios</h2>
+          {% for comment in comments %}
+          <div class="comments" style="padding: 10px;">
+            <p class="font-weight-bold">
+              {{ comment.name }}
+              <span class=" text-muted font-weight-normal">
+                {{ comment.created_on }}
+              </span>
+            </p>
+            {{ comment.body | linebreaks }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card-body">
+          {% if new_comment %}
+          <div class="alert alert-success" role="alert">
+            Tu comentario será chequeado y aprobado por los administradores.
+          </div>
+          {% else %}
+          <h3>Deje un comentario</h3>
+          <form method="post" style="margin-top: 1.3em;">{% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit" class="btn btn-primary  btn-lg">Postear</button>
+          </form>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 {% endblock contenidoQueCambia %}

@@ -11,10 +11,12 @@
 {% endblock %}
 
 {% block contenidoQueCambia%}
-
+<div class="col-8 offset-2">
+<section class="formHead">
+    <h1> Buscar: </h1>
+</section>
 <section class="formHead">
     <p> Ingrese los datos para buscar un post: </p>
-    
 </section>
 <section class="contenidoFormulario">
     <form class="formData" action="search/" method="GET">
@@ -23,4 +25,5 @@
         <button class="btn btn-primary" type="submit">Buscar posts</button>
     </form>
 </section>
+</div>
 {% endblock %}

@@ -5,20 +5,28 @@
 <link href="{% static 'css/personalStyle.css' %}" rel="stylesheet" />
 <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 
-
 {% block page_title %}
-    <title>Sobre nosotros - Equipo de desarrollo</title>
+<title>Sobre nosotros</title>
 {% endblock %}
 
 {% block contenidoQueCambia%}
-
-
-        <h2>Sobre el proyecto</h2>
-        <p>Este es un blog sencillo hecho usando Django y Python donde los usuarios pueden registrarse y ejecutar CRUD sobre los posts</p>
-
-        <h3>Santiago Troitiño Cristancho</h3>
-        <p>Profesional de Ingeniería Informática con pasión por la tecnología, la música y ahora Python :D</p>
-
-
+<div class="col-lg-6 offset-lg-3">
+    <h2 style="text-align:center">Sobre el proyecto</h2>
+    <div class="container-fluid">
+        <p >Este es un blog sencillo hecho usando Django y Python donde los usuarios pueden registrarse y ejecutar CRUD sobre los posts</p>
+        <div class="row">
+            <div class="col" style="text-align: center;">
+                <img src="/media/avatares/Santiago.png" width="250" height="250">
+                <h4 style="text-align:center">Santiago Troitiño Cristancho</h4>
+                <p style="text-align:center">Profesional de Ingeniería Informática con pasión por la tecnología, la música y ahora Python :D</p>
+            </div>
+            <div class="col" style="text-align: center;">
+                <img src="/media/avatares/Tatiana.png" width="250" height="250" >
+                <h4 style="text-align:center">Tatiana Cazazola</h4>
+                <p style="text-align:center">Aprendiendo python para la applicación en modelos de Machine Learning.</p>
+            </div> 
+        </div>
+    </div>
+</div>
 
 {% endblock %}

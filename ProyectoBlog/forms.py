@@ -1,3 +1,4 @@
+from .models import *
 from email import contentmanager
 from socket import fromshare
 from tkinter import Widget
@@ -7,9 +8,6 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib.auth.models import User
 from UserManagement.models import PerfilUsuario
 
-
-
-
 class PostFormulario(forms.Form):
 
     title = forms.CharField()
@@ -17,6 +15,11 @@ class PostFormulario(forms.Form):
     created_on = forms.DateField()
 
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'body')
+        
 # class UserRegisterForm(UserCreationForm):
 
 #     email = forms.EmailField()

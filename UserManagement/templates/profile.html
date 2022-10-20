@@ -1,25 +1,31 @@
 {% extends 'padreBlog.html' %}
 
 {% block page_title %}
-    <title> Mi perfil - {{ usuario }}</title>
+<title> Mi perfil - {{ user.username }}</title>
 {% endblock %}
 
 
 {% block contenidoQueCambia %}
-<h2> Abajo encontrarás la información de tu perfil </h2>
-<div style="position: relative; top: 80px">
-    <ul>
-        <b> Foto de perfil: </b> <br>
-        <img src="{{ avatar }}" width="100px">
-        
-        <li><b> Nombre de usuario: </b>{{ user.username }}</li>
-        <li><b> Correo registrado: </b>{{ user.email }}</li>
-        <li><b> Nombre completo: </b> {{ user.first_name }} {{ user.last_name }}</li>
-        <li><b> Descripción: </b> {{ user.perfilusuario.description }}</li>
-        <li><b> URL: </b> <a href="{{ user.perfilusuario.web_link }}">{{ user.perfilusuario.web_link }} </a></li>
-    </ul>
-    <a class="btn btn-success" style="text-decoration: none; color: white" href="{% url 'editProfile'%}">Editar Perfil</a>
-    <a class="btn btn-success" style="text-decoration: none; color: white" href="{% url 'changeAvatar'%}"> Cambiar imagen de perfil</a>
-    <a class="btn btn-success" style="text-decoration: none; color: white" href="{% url 'inbox' %}"> Bandeja de entrada</a>
+<h2 style="text-align:center"> Hola {{user.username}}! </h2>
+<h4 style="text-align:center"> Abajo encontrarás la información de tu perfil </h4>
+<div class="container-fluid" >
+        <ul>
+            <div style="text-align:center" >
+                <img src="{{ avatar }}" width="400px"><br>
+                <b> Foto de perfil</b> 
+            </div>
+            <div class="col-lg-6 offset-lg-3" style="font-size: 18px; line-height:3em">
+                <li><b> Nombre de usuario: </b>{{ user.username }}</li>
+                <li><b> Correo registrado: </b>{{ user.email }}</li>
+                <li><b> Nombre completo: </b> {{ user.first_name }} {{ user.last_name }}</li>
+                <li><b> Descripción: </b> {{ user.perfilusuario.description }}</li>
+                <li><b> URL: </b> <a href="{{ user.perfilusuario.web_link }}">{{ user.perfilusuario.web_link }} </a></li>
+            </div>
+        </ul>
+        <div clas="col-lg-6 offset-lg-3" style="justify-content: space-between;text-align: center;font-size: 30px;">
+            <a class="btn btn-success" style="text-decoration: none; color: white" href="{% url 'editProfile'%}">Editar Perfil</a>
+            <a class="btn btn-success" style="text-decoration: none; color: white" href="{% url 'changeAvatar'%}"> Cambiar imagen de perfil</a>
+            <a class="btn btn-success" style="text-decoration: none; color: white" href="{% url 'inbox' %}"> Bandeja de entrada</a>
+        </div>
 </div>
 {% endblock contenidoQueCambia %}

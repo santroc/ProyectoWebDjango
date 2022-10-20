@@ -3,9 +3,10 @@ Proyecto de curso Python + Django
 
 Este proyecto tiene tres Apps.
 
-Para ingresar a la página principal de la aplicación se podrá ingresar a:
-    http://127.0.0.1:8000/cover
-Desde dicho link se podrá acceder tanto a la aplicación AppBlog como al Blog. 
+Para ingresar a la página principal de la aplicación debe utilizar el siguiente link:
+    http://127.0.0.1:8000/
+
+Desde dicho link se accederá a la portada, de allí se puede acceder tanto a la aplicación AppBlog como al Blog. 
 
 1. AppBlog: Una aplicación donde se encuentra lo que hemos venido trabajando en clase, modelos Estudiante, Profesor, Entregable, Curso con la posibilidad de agregar nuevos a través de de un formulario y poder buscar cursos por número de cursada (camada)
 
@@ -23,7 +24,7 @@ Detalle de casos de QA: https://docs.google.com/spreadsheets/d/1gs2u9Oyg0yUvxJwA
 
 Tatiana Cazzazola:
 
-    - Página Front-End de portada
+    - Página Front-End de portada, Front-End del Blog. Creación de módulo para posteo de comentarios
 
 2. ProyectoBlog:
 
@@ -45,23 +46,9 @@ http://127.0.0.1:8000/accounts/(...)
 
 
 Pendientes:
-
-Deben realizarse:
-
-- Complementar modelo de "Post":
-    - Agregar subtítulo, autor e imagen (X)
-- Módulo de Usuarios Django: 
-   - Mover todo lo relacionado a este módulo a una App independiente y respetar estructura de rutas de la entrga final (ejemplo: /accounts/xyz) (X)
-   - Incluir la opción de editar: descripción  y un link a una página web (X)
-        - Agregar mensaje de éxito al editar y atomicidad para la view de edición (X)
-- Implementar página de About (X)
-- Adaptar página para que ciertas funciones solo puedan realizarse con sesión iniciada:
-   - Para crear, editar o borrar las fotos debes estar registrado como Administrador (X)
-- Crear por lo menos tres casos de prueba documentados (X)
-- Crear funcionalidad de mensajería entre perfiles:
-    - Implementar funcionalidad de enviar mensajes a otros perfiles (X)
-    - Implementar bandeja de entrada con mensajes ordenados del más a menos reciente (X)
-    - Implementar botón de respuesta (X)
+- Incluir la opción de editar: descripción  y un link a una página web (X)
+    - Agregar mensaje de éxito al editar y atomicidad para la view de edición (X)
+- Aprobar automáticamente comentarios en caso de ser un usuario registrado.
 
 Opcionales despriorizados (Posterior a entrega final):
 - Subir a Heroku (X)

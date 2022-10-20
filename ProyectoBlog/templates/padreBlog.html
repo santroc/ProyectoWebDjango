@@ -95,40 +95,42 @@
         <!--Esto es lo dinámico dentro de la página-->
     
         {% block contenidoQueCambia %}
-        <marquee> Bienvenido a la mejor web del mundo :D </marquee>
         
         <!-- Aquí va la lista de posts -->
-        <div class="col-md-6 mt-3 left">
-            {% if post_list %}
-            {% for post in post_list %}
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="card-title">{{ post.title }}</h2>
-                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
-                    <p class="card-text">{{post.content|slice:":200" }}</p>
-                    <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Leer más &rarr;</a>
-                    {% if user.is_authenticated %}
-                    {% if user.is_superuser %}
-                        <a href="{% url 'post_update_admin' post.id %}" class="btn btn-secondary">Editar </a>
-                    {% else %}
-                        <a href="{% url 'post_update' post.id %}" class="btn btn-secondary">Editar </a>
-                    {% endif %}
-                    {% if user.is_superuser %}
-                    <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Eliminar </a>
-                    {% endif %}
-                    {% endif %}
-                </div>
+        <h2 style="text-align:center">Blog - Posts</h2>
+        <div class="container mt-5">
+            <div class="row">
+                {% if post_list %}
+                    {% for post in post_list %}
+                    <div class="card col-lg-6 offset-lg-3 mb-3">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ post.title }}</h2>
+                            <p class="card-text text-muted mb-3">{{ post.author }} | {{ post.created_on}} </p>
+                            <p class="card-text">{{post.content|slice:":200" }}</p>
+                            <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Leer más &rarr;</a>
+                            {% if user.is_authenticated %}
+                            {% if user.is_superuser %}
+                                <a href="{% url 'post_update_admin' post.id %}" class="btn btn-secondary">Editar </a>
+                            {% else %}
+                                <a href="{% url 'post_update' post.id %}" class="btn btn-secondary">Editar </a>
+                            {% endif %}
+                            {% if user.is_superuser %}
+                            <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Eliminar </a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                <p style="text-align:center"> No hay post agregados al Blog aún</p>
+                {% endif%}
             </div>
-            {% endfor %}
-            {% else %}
-            <p style="text-align:center"> No hay post agregados al Blog aún</p>
-            {% endif%}
         </div>
         {% endblock %}
+        
         <!-- Fin de bloque dinámico-->
-        </div>
-        <footer>
-            <p class="m-0 text-dark text-center ">Made with &#128151; Santiago Troitiño Cristancho 2022 (Still working on the Front-end &#128517;)</p>
-        </footer>
     </body>
+    <footer>
+        <p class="m-0 text-dark text-center ">Made with &#128151; Santiago Troitiño Cristancho 2022 (Still working on the Front-end &#128517;)</p>
+    </footer>
 </html>

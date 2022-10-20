@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from django.urls import reverse
-from .models import Post, Message
+from .models import *
+from .forms import *
 from UserManagement.models import  Avatar
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.template import loader
 
 #Login, Logout y sign-up
@@ -50,12 +51,39 @@ def addPost(request):
         except:
             avatar = None
         return render(request, 'post.html', {'avatar': avatar})
+    
     avatar = Avatar.objects.filter(user = request.user.id)
     try:
         avatar = avatar[0].image.url
     except:
         avatar = None
+    
     return render(request, 'post.html', {'avatar': avatar})
+
+def post_detail(request, pk):
+    template_name = 'post_detail.html'
+    post = get_object_or_404(Post, pk=pk)
+    comments = post.comments.filter(active=True)
+    new_comment = None
+
+    # Comentario
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+    return render(request, template_name, {'post': post, 'comments': comments,'new_comment': new_comment,'comment_form': comment_form})
+
+# @login_required
+# def comment_approved(request, pk):
+#     comment = get_object_or_404(Comment, pk=pk)
+#     comment.approve()
+#     return redirect('post_detail', pk=comment.post.pk)
+
 
 def busquedaPost(request):
     avatar = Avatar.objects.filter(user = request.user.id)
@@ -105,20 +133,20 @@ class PostList(generic.ListView):
         return context
     
 
-class PostDetail(generic.DetailView):
+# class PostDetail(generic.DetailView):
 
-    model = Post
-    template_name = 'post_detail.html'
+    # model = Post
+    # template_name = 'post_detail.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(PostDetail, self).get_context_data(**kwargs)
-        avatar = Avatar.objects.filter(user = self.request.user.id)
-        try:
-            avatar = avatar[0].image.url
-        except:
-            avatar = None
-        context['avatar'] = avatar
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super(PostDetail, self).get_context_data(**kwargs)
+    #     avatar = Avatar.objects.filter(user = self.request.user.id)
+    #     try:
+    #         avatar = avatar[0].image.url
+    #     except:
+    #         avatar = None
+    #     context['avatar'] = avatar
+    #     return context
 
 class PostDelete(generic.DeleteView):
     template = 'post_confirm_delete.html'

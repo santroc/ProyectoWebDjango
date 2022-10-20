@@ -18,21 +18,28 @@
         </table>>
         <input type="submit" value="Crear post">
     </form> -->
-    <h1> Nuevo post</h1>
-    <section class="formHead">
-        <p> Por favor ingrese los datos para agregar un nuevo post</p>
-    </section> 
-    <section class="contenidoFormulario">
-        <form class="formData" action="addPost" method="POST" enctype="multipart/form-data"> {% csrf_token %}
-            <input type="text" name="title" placeholder="Título">
-            <input type="text" name="subtitle" placeholder="Subtítulo">
-            <input type="file" id="img" name="image" accept="image/*">
-            Contenido del post:
-            <textarea name="content"> </textarea>
-    
-            <button class="btn btn-primary" type="submit">Enviar</button>
-        </form>
-    </section>
+    <div class="container">
+        <div class="col-8 offset-2">
+            <section class="formHead">
+                <h1 class="my-5">Nuevo post</h1>
+            </section>     
+            <section class="formHead">
+                <span>Por favor ingrese los datos para agregar un nuevo post</span>
+            </section> 
+            <section class="contenidoFormulario">
+                <form class="formData" action="addPost" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                    <input type="text" name="title" placeholder="Título">
+                    <input type="text" name="subtitle" placeholder="Subtítulo">
+                    <input type="file" id="img" name="image" accept="image/*">
+                    Contenido del post:
+                    <textarea name="content"> </textarea>
+            
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
 
 
 
