@@ -151,5 +151,3 @@ def agregarAvatar(request):
         except:
             form = AvatarFormulario()
     return render(request, 'addAvatar.html', {'form': form})
-
-

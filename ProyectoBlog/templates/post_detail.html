@@ -1,74 +1,22 @@
 {% extends 'padreBlog.html' %} {% block contenidoQueCambia %}
 
-<title>Post | {{ object.title }}</title>
-<div class="container-fluid my-5">
+<div class="container">
   <div class="row">
-    <div class="col-lg-6 offset-lg-3">
-      <div class="card">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
         {% block page_title %}
-        <h1 class="card-title text-center my-3">{{ object.title }}</h1>
+        <title>{{ object.title }}</title>
         {% endblock %}
-        <h3 class="card-title text-center my-3">{{ object.subtitle }}</h3>
-        <div class="text-muted txt-center mb-3">
-          <div>
-            creado: {{ object.created_on }},
-            última actualización: {{object.updated_on}},
-            por {{ object.author }}</a>
-          </div>
-        </div>
+        <h2>{{ object.subtitle }}</h2>
+        <p class=" text-muted">{{ object.author }} | {{ object.created_on }}</p>
         {% if object.image %}
-        <img class="card-img-top" src='{{ object.image.url }}'>
+        <img src='{{ object.image.url }}'>
         {% endif %}
-        <p class="card-text mt-5 p-4">{{ object.content | safe }}</p>
+        <p class="card-text ">{{ object.content | safe }}</p>
         <a href="{% url 'Inicio' %}"> Atrás </a>
       </div>
     </div>
   </div>
-  {% if comments%}
-  <div class="row mt-5">
-    <div class="col-lg-6 offset-lg-3">
-      Comentarios:{{ comments.count|pluralize }}
-      <span class="badge badge-dark ml-2">{{ comments.count }}</span>
-    </div>
-    {% for comment in comments %}
-    <div class="col-lg-6 offset-lg-3 mt-2">
-      <div class="card p-2">
-        <div class="row">
-          <div class="col-12">
-            <strong>{{ comment.author }}</strong>
-          </div>
-          <div class="col-12">
-            <p class="m-1 mt-3">{{ comment.content }}</p>
-            <p class="text-right text-muted"><small>{{ comment.created }}</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  {%else%}
-  <div class="row mt-5">
-    <div class="col-lg-6 offset-lg-3">
-      Sé el primero en dejar un comentario!
-    </div>
-  </div>
-  {% endif %}
-
-  <!-- Form to leave comment -->
-  <div class="row mt-5">
-    <div class="col-lg-6 offset-lg-3">
-      <h3>Deja un comenatario </h3>
-      <form method='POST'>  {% csrf_token %}
-        <div class="form-group">Autor: {{user.username}}</div>
-        <div class="form-group">
-          <span class="ml-2">Comentario:</span>
-          <textarea class="form-control" id="id_content" name="content" rows="4">{{ form.content.value|default:"" }}</textarea>
-        </div>
-        <button class="btn btn-primary ml-2" type="submit">Publicar</button>
-      </form>
-    </div>
-  </div>
 </div>
-
 
 {% endblock contenidoQueCambia %}
