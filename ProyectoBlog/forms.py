@@ -1,6 +1,5 @@
 from .models import *
 from email import contentmanager
-from socket import fromshare
 from tkinter import Widget
 from turtle import title
 from django import forms
